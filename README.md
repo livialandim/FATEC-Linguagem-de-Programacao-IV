@@ -4,7 +4,9 @@ Esse GitHub está dividido em duas pastas: ![aulas](aulas/README.md) e ![trabalh
 
 O principal objetivo dessa pasta é apresentar os conteúdos aprendidos com a linguagem de programação **PHP**.
 
-# Estrutura do bootstrap
+# Bootstrap
+
+## Estrutura do bootstrap
 
 ```
 <!doctype html>
