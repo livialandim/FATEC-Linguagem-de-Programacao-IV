@@ -8,6 +8,11 @@
 </head>
 <body class="container p-3">
     <?php
+        function validar_data($dia, $mes, $ano)
+        {
+            return checkdate($mes, $dia, $ano);
+        }
+    
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
@@ -16,8 +21,7 @@
                 $mes = $_POST['mes'];
                 $ano = $_POST['ano'];
         
-                // Verifica se a data é válida usando checkdate()
-                if (checkdate($mes, $dia, $ano)) {
+                if (validar_data($dia, $mes, $ano)) {
                     echo "<p>A data $dia/$mes/$ano é válida</p>";
                 } else {
                     echo "<p>A data informada não é válida</p>";

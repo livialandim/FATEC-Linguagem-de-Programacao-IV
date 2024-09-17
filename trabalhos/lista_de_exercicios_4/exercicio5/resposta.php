@@ -8,6 +8,10 @@
 </head>
 <body class="container p-3">
     <?php
+        function calcular_raiz_quadrada($numero) 
+        {
+            return sqrt($numero);
+        }
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
@@ -16,7 +20,7 @@
 
                 if ($numero >= 0) 
                 {
-                    $raizQuadrada = sqrt($numero);
+                    $raizQuadrada = calcular_raiz_quadrada($numero);
                     echo "<p>A raiz quadrada de $numero é $raizQuadrada</p>";
                 }
                 else

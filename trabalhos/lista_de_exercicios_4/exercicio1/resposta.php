@@ -8,13 +8,17 @@
 </head>
 <body class="container p-3">
     <?php
+        function contar_caracteres($palavra) 
+        {
+            return strlen($palavra);
+        }
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
             {
                 $palavra = $_POST['palavra'];
 
-                $numero_de_caracteres = strlen($palavra);
+                $numero_de_caracteres = contar_caracteres($palavra);
 
                 echo "<p>A palavra '$palavra' possui $numero_de_caracteres caracteres</p>";
             }

@@ -8,6 +8,10 @@
 </head>
 <body class="container p-3">
     <?php
+        function verificar_palavra_contida($palavra1, $palavra2) 
+        {
+            return strpos($palavra1, $palavra2) !== false; // Função interna strpos()
+        }
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
@@ -15,7 +19,7 @@
                 $palavra1 = $_POST['palavra1'];
                 $palavra2 = $_POST['palavra2'];
 
-                if (strpos($palavra1, $palavra2) !== false)
+                if (verificar_palavra_contida($palavra1, $palavra2))
                 {
                     echo "<p>A palavra '$palavra2' está contida na palavra '$palavra1'.</p>";
                 } 

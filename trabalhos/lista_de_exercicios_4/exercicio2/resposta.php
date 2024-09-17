@@ -8,17 +8,24 @@
 </head>
 <body class="container p-3">
     <?php
+        function converter_maiuscula_minuscula($palavra)
+        {
+            return [
+                'maiuscula' => strtoupper($palavra), 
+                'minuscula' => strtolower($palavra)  
+            ];
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
             {
                 $palavra = $_POST['palavra'];
 
-                $maiuscula = strtoupper($palavra);
-                $minuscula = strtolower($palavra);
+                $resultado = converter_maiuscula_minuscula($palavra);
         
-                echo "<p>Palavra em maiúsculo: $maiuscula</p>";
-                echo "<p>Palavra em minúsculo: $minuscula</p>";
+                echo "<p>Palavra em maiúsculo: {$resultado['maiuscula']}</p>";
+                echo "<p>Palavra em minúsculo: {$resultado['minuscula']}</p>";
             }
             catch (Exception $e) 
             {

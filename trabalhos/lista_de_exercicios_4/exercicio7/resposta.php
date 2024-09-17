@@ -8,6 +8,22 @@
 </head>
 <body class="container p-3">
     <?php
+        function calcular_diferenca_dias($data1, $data2) 
+        {
+            $data1Convertida = DateTime::createFromFormat('d/m/Y', $data1);
+            $data2Convertida = DateTime::createFromFormat('d/m/Y', $data2);
+    
+            if ($data1Convertida && $data2Convertida) 
+            {
+                $diferenca = $data1Convertida->diff($data2Convertida);
+                return $diferenca->days;
+            } 
+            else 
+            {
+                return false;
+            }
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
@@ -15,14 +31,11 @@
                 $data1 = $_POST['data1'];
                 $data2 = $_POST['data2'];
 
-                $data1_convertida = DateTime::createFromFormat('d/m/Y', $data1);
-                $data2_convertida = DateTime::createFromFormat('d/m/Y', $data2);
+                $dias_diferenca = calcular_diferenca_dias($data1, $data2);
         
-                if ($data1_convertida && $data2_convertida) 
+                if ($dias_diferenca !== false) 
                 {
-                    $diferenca = $data1_convertida->diff($data2_convertida);
-        
-                    echo "<p>A diferença entre $data1 e $data2 é de $diferenca->days dias</p>";
+                    echo "<p>A diferença entre $data1 e $data2 é de $dias_diferenca dias</p>";
                 } 
                 else 
                 {

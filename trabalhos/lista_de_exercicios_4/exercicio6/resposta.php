@@ -8,12 +8,17 @@
 </head>
 <body class="container p-3">
     <?php
+        function arredondar_numero($numero) 
+        {
+            return round($numero);
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             try
             {
                 $numero = $_POST['numero'];
-                $numero_arredondado = round($numero);
+                $numeroArredondado = arredondar_numero($numero);
         
                 echo "<p>O número $numero arredondado é $numero_arredondado</p>";
             }
