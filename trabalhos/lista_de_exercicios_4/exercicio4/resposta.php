@@ -21,9 +21,12 @@
                 $mes = $_POST['mes'];
                 $ano = $_POST['ano'];
         
-                if (validar_data($dia, $mes, $ano)) {
+                if (validar_data($dia, $mes, $ano))
+                {
                     echo "<p>A data $dia/$mes/$ano é válida</p>";
-                } else {
+                } 
+                else 
+                {
                     echo "<p>A data informada não é válida</p>";
                 }
             }

@@ -10,12 +10,12 @@
     <?php
         function calcular_diferenca_dias($data1, $data2) 
         {
-            $data1Convertida = DateTime::createFromFormat('d/m/Y', $data1);
-            $data2Convertida = DateTime::createFromFormat('d/m/Y', $data2);
+            $data1_convertida = DateTime::createFromFormat('d/m/Y', $data1);
+            $data2_convertida = DateTime::createFromFormat('d/m/Y', $data2);
     
-            if ($data1Convertida && $data2Convertida) 
+            if ($data1_convertida && $data2_convertida) 
             {
-                $diferenca = $data1Convertida->diff($data2Convertida);
+                $diferenca = $data1_convertida->diff($data2_convertida);
                 return $diferenca->days;
             } 
             else 
