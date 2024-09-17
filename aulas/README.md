@@ -5,3 +5,4 @@
 3. Aula do dia 20/08: ![Aula](aula_20_08)
 4. Aula do dia 27/08: ![Aula](aula_27_08)
 5. Aula do dia 03/09: ![Aula](aula_03_09)
+6. Aula do dia 10/09: Ausente
