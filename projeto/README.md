@@ -2,7 +2,7 @@
 
 ## Configurações do banco de dados
 
-Na pasta config, está amazenado o arquivo ![bancodedados.php](config\bancodedados.php), que contém as configurações do banco de dados.
+Na pasta config, está amazenado o arquivo ![bancodedados.php](config/bancodedados.php), que contém as configurações do banco de dados.
 
 ## Funções
 
