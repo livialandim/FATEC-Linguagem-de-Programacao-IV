@@ -9,32 +9,33 @@
     <title>Exercício 1</title>
 </head>
 
-<body class="container p-3">
-    <h1 class="m-3">Calculadora de soma</h1>
+<body>
+    <main class="container p-3">
+        <h1 class="m-3">Calculadora de soma</h1>
 
-    <form action="resposta.php" method="POST">
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="primeiroNumero" class="form-label">Informe um número:</label>
-                    <input type="number" class="form-control" name="primeiroNumero" id="primeiroNumero" placeholder="1, 2, 3...">
+        <form action="resposta.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="primeiroNumero" class="form-label">Informe um número:</label>
+                        <input type="number" class="form-control" name="primeiroNumero" id="primeiroNumero" placeholder="1, 2, 3...">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="segundoNumero" class="form-label">Informe outro número:</label>
+                        <input type="number" class="form-control" name="segundoNumero" id="segundoNumero" placeholder="1, 2, 3..">
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label for="segundoNumero" class="form-label">Informe outro número:</label>
-                    <input type="number" class="form-control" name="segundoNumero" id="segundoNumero" placeholder="1, 2, 3..">
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-    </form>
-
+        </form>
+    </main>
 </body>
 
 </html>

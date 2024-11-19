@@ -9,22 +9,24 @@
 </head>
 
 <body>
-  <h1>Resposta do cálculo</h1>
-  <?php
-  if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    try {
-      $valor1 = (int) $_POST['primeiroNumero'];
-      $valor2 = (int) $_POST['segundoNumero'];
+  <main class="container">
+    <h1>Resposta do cálculo</h1>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+      try {
+        $valor1 = (int) $_POST['primeiroNumero'];
+        $valor2 = (int) $_POST['segundoNumero'];
 
 
-      $resultado = $valor1 + $valor2;
-      echo "<p>Soma: $resultado </p>";
-    } catch (Exception $e) {
-      echo "Erro! " . $e->getMessage();
+        $resultado = $valor1 + $valor2;
+        echo "<p>Soma: $resultado </p>";
+      } catch (Exception $e) {
+        echo "Erro! " . $e->getMessage();
+      }
     }
-  }
-  ?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </main>
 </body>
 
 </html>
