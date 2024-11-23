@@ -15,7 +15,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nome da Linha</th>
-                <th>Cidade Destino</th>
+                <th>Cidade Saída</th>
                 <th>Cidade Chegada</th>
                 <th>Horário de Saída</th>
                 <th>Horário de Chegada</th>
@@ -27,7 +27,7 @@
             <tr>
                 <td><?= $linha['id'] ?></td>
                 <td><?= $linha['nome'] ?></td>
-                <td><?= $linha['cidade_destino'] ?></td>
+                <td><?= $linha['cidade_saida'] ?></td>
                 <td><?= $linha['cidade_chegada'] ?></td>
                 <td><?= $linha['horario_saida'] ?></td>
                 <td><?= $linha['horario_chegada'] ?></td>

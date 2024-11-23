@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li><strong>Nome da Linha:</strong> <?= $linha['nome'] ?></li>
         <li><strong>Horário de Saída:</strong> <?= $linha['horario_saida'] ?></li>
         <li><strong>Horário de Chegada:</strong> <?= $linha['horario_chegada'] ?></li>
-        <li><strong>Cidade de Destino:</strong> <?= $linha['cidade_destino'] ?></li>
+        <li><strong>Cidade de Destino:</strong> <?= $linha['cidade_saida'] ?></li>
         <li><strong>Cidade de Chegada:</strong> <?= $linha['cidade_chegada'] ?></li>
     </ul>
 

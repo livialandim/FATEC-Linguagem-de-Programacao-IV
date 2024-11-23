@@ -3,8 +3,9 @@
     require_once 'navbar.php';    
     require_once '../funcoes/linhas.php'; 
     
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+    if ($id > 0) {
         $linha = buscarLinhaPorId($id);  // Supondo que a função de busca esteja no arquivo de funções
     }
     
@@ -12,7 +13,7 @@
     function buscarLinhaPorId($id) {
         global $pdo;
         try {
-            $sql = "SELECT id, nome, horario_saida, horario_chegada, cidade_destino, cidade_chegada FROM linha WHERE id = :id";
+            $sql = "SELECT id, nome, horario_saida, horario_chegada, cidade_saida, cidade_chegada FROM linha WHERE id = :id";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->execute();
@@ -28,24 +29,20 @@
             $nome = $_POST['nome'];
             $horario_saida = $_POST['horario_saida'];
             $horario_chegada = $_POST['horario_chegada'];
-            $cidade_destino = $_POST['cidade_destino'];
+            $cidade_saida = $_POST['cidade_saida'];
             $cidade_chegada = $_POST['cidade_chegada'];
+            // $id = $_POST['id'];
 
-            // Atualiza a linha
-            $sql = "UPDATE linha SET nome = :nome, horario_saida = :horario_saida, horario_chegada = :horario_chegada, cidade_destino = :cidade_destino, cidade_chegada = :cidade_chegada WHERE id = :id";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':horario_saida', $horario_saida);
-            $stmt->bindParam(':horario_chegada', $horario_chegada);
-            $stmt->bindParam(':cidade_destino', $cidade_destino);
-            $stmt->bindParam(':cidade_chegada', $cidade_chegada);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
+            if (atualizarLinha($id, $nome, $cidade_saida, $cidade_chegada, $horario_saida, $horario_chegada)) {
+                header('Location: linhas.php');
+                exit();
+            }
+            else {
+                $erro = "Erro ao alterar o produto";
+            }
 
-            header('Location: linhas.php');
-            exit();
         } catch (PDOException $e) {
-            echo "Erro: " . $e->getMessage();
+            $erro = "Erro: " . $e->getMessage();
         }
     }
 ?>
@@ -53,7 +50,7 @@
 <div class="container mt-5">
     <h2>Editar Linha</h2>
 
-    <form method="post">
+    <form method="post" action="">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome da Linha</label>
             <input type="text" name="nome" id="nome" class="form-control" value="<?= $linha['nome'] ?>" required>
@@ -67,8 +64,8 @@
             <input type="time" name="horario_chegada" id="horario_chegada" class="form-control" value="<?= $linha['horario_chegada'] ?>" required>
         </div>
         <div class="mb-3">
-            <label for="cidade_destino" class="form-label">Cidade Destino</label>
-            <input type="text" name="cidade_destino" id="cidade_destino" class="form-control" value="<?= $linha['cidade_destino'] ?>" required>
+            <label for="cidade_destino" class="form-label">Cidade Saída</label>
+            <input type="text" name="cidade_saida" id="cidade_saida" class="form-control" value="<?= $linha['cidade_saida'] ?>" required>
         </div>
         <div class="mb-3">
             <label for="cidade_chegada" class="form-label">Cidade Chegada</label>

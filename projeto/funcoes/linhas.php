@@ -17,16 +17,16 @@ function gerarDadosGraficoViagensPorLinha(): array {
 }
 
 
-function novaLinha($nome, $horario_saida, $horario_chegada, $cidade_destino, $cidade_chegada) {
+function novaLinha($nome, $horario_saida, $horario_chegada, $cidade_saida, $cidade_chegada) {
     global $pdo;
     try {
-        $sql = "INSERT INTO linha (nome, horario_saida, horario_chegada, cidade_destino, cidade_chegada) 
-                VALUES (:nome, :horario_saida, :horario_chegada, :cidade_destino, :cidade_chegada)";
+        $sql = "INSERT INTO linha (nome, horario_saida, horario_chegada, cidade_saida, cidade_chegada) 
+                VALUES (:nome, :horario_saida, :horario_chegada, :cidade_saida, :cidade_chegada)";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':horario_saida', $horario_saida);
         $stmt->bindParam(':horario_chegada', $horario_chegada);
-        $stmt->bindParam(':cidade_destino', $cidade_destino);
+        $stmt->bindParam(':cidade_saida', $cidade_saida);
         $stmt->bindParam(':cidade_chegada', $cidade_chegada);
         return $stmt->execute();
     } catch (PDOException $e) {
@@ -86,17 +86,17 @@ function excluirLinha($id) {
     }
 }
 
-function atualizarLinha($id, $nome, $cidade_destino, $cidade_chegada, $horario_saida, $horario_chegada) {
+function atualizarLinha($id, $nome, $cidade_saida, $cidade_chegada, $horario_saida, $horario_chegada) {
     global $pdo;
     try {
-        $sql = "UPDATE linha SET nome = :nome, cidade_destino = :cidade_destino, cidade_chegada = :cidade_chegada, 
+        $sql = "UPDATE linha SET nome = :nome, cidade_saida = :cidade_saida, cidade_chegada = :cidade_chegada, 
                 horario_saida = :horario_saida, horario_chegada = :horario_chegada WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':cidade_destino', $cidade_destino);
-        $stmt->bindParam(':cidade_chegada', $cidade_chegada);
-        $stmt->bindParam(':horario_saida', $horario_saida);
-        $stmt->bindParam(':horario_chegada', $horario_chegada);
+        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+        $stmt->bindParam(':cidade_saida', $cidade_saida, PDO::PARAM_STR);
+        $stmt->bindParam(':cidade_chegada', $cidade_chegada, PDO::PARAM_STR);
+        $stmt->bindParam(':horario_saida', $horario_saida, PDO::PARAM_STR);
+        $stmt->bindParam(':horario_chegada', $horario_chegada, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
     } catch (PDOException $e) {
